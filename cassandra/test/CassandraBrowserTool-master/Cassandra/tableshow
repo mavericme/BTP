@@ -1,0 +1,11 @@
+		{% for row in d[item][item1] %}
+		<tr>
+			<th>Id</th>
+		        {% for key in row[1] %}
+			<th>
+				<font color="blue">Key</font>
+				<font color="green">Value</font>
+			</th>
+		        {% endfor %}
+		</tr>
+		{% endfor %}

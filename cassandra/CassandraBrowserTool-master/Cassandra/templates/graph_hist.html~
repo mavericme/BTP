@@ -1,0 +1,147 @@
+{% extends "layout.html" %}
+
+{% block title %}	
+	Cassandra Browsing Tool
+{% endblock %}
+
+{% block javascript %}
+<link rel="stylesheet" href="../static/css/1.css">
+<script src="../static/1.js"></script>
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="http://code.highcharts.com/modules/exporting.js"></script>
+
+{% endblock %}
+
+{% block content %}
+<table>
+<td>
+<tr>
+<form method = "POST" accept-charset="UTF-8" />
+		<table>
+    		<tr>
+    			<td><label> KeySpace </label></td>  
+    			<td><input type="text" name="keyspace_x" value=""> </td>
+    		</tr>
+		
+    		<tr>
+    			<td><label> ColumnFamily </label></td>  
+    			<td><input type="text" name="columnfamily_x" value=""> </td>
+    		</tr>
+		
+		<tr>
+    		<td><label> X-axis </label></td>  
+    		<td><input type="text" name="x" value=""> </td>
+    		</tr>
+
+  	     	</table>
+		</br>       	
+</tr>
+<tr>
+		<table>
+    		<tr>
+    			<td><label> KeySpace </label></td>  
+    			<td><input type="text" name="keyspace_y" value=""> </td>
+    		</tr>
+		
+    		<tr>
+    			<td><label> ColumnFamily </label></td>  
+    			<td><input type="text" name="columnfamily_y" value=""> </td>
+    		</tr>
+		
+		<tr>
+    		<td><label> Y-axis </label></td>  
+    		<td><input type="text" name="y" value=""> </td>
+    		</tr>
+
+  	     	</table>
+		</br>       	
+</tr>
+</td>
+<table> 
+  	     	<tr>
+		<td>Select Graph:</td>
+    		<td>
+		<select name="graph">
+			<option value="histogram">Histogram</option>
+			<option value="bar">Bar Chart</option>
+			<option value="pie">Pie Chart</option>
+		</select>
+		</td>
+		</tr>
+  	     	</table>
+		</br>
+  	     	<table> 
+  	     	<tr><td colspan="2">	<input type="submit" value="Submit">	</td></tr>
+  	     	</table> 
+</form>
+</table>
+
+<div id="container" style="min-width: 310px; height: 400px; overflow: auto; overflow-y: true; margin: 0 auto"></div>
+
+<script>
+var r = {{t|tojson|safe}}
+
+$(function () {
+    $('#container').highcharts({
+        chart: {
+            type: 'bar'
+        },
+        title: {
+            text: '{{x}} Vs {{y}}'
+        },
+        subtitle: {
+            text: null
+        },
+        xAxis: {
+            categories: r,
+            title: {
+                text: '{{x}}'
+            }
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: '{{y}}',
+                align: 'high'
+            },
+            labels: {
+                overflow: ''
+            }
+        },
+        tooltip: {
+            valueSuffix: ' millions'
+        },
+        plotOptions: {
+            bar: {
+                dataLabels: {
+                    enabled: true
+                }
+            }
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'top',
+            x: -40,
+            y: 100,
+            floating: true,
+            borderWidth: 1,
+            backgroundColor: ((Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'),
+            shadow: true
+        },
+        credits: {
+            enabled: false
+        },
+        series: [{
+            name: null,
+            data: {{l|tojson|safe}}
+        }]
+    });
+});
+</script>
+
+{% endblock %}
+
+
+

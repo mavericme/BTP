@@ -1,0 +1,80 @@
+{% extends "layout.html" %}
+
+{% block title %}	
+	{{ info.title }}
+{% endblock %}
+
+{% block javascript %}
+<script type="text/javascript">
+   function get_count() {
+      i = parseInt(document.getElementById("count").value);
+      i = i+1;
+      document.getElementById("count").value = i; 
+      alert(document.getElementById("count").value);
+      return i;
+   }
+   
+   function add_entry(tableID) { 
+    var table = document.getElementById(tableID);
+    var rowCount = table.rows.length;
+    var row = table.insertRow(rowCount);
+    
+    count = get_count()
+    	var cell0 = row.insertCell(0);
+    	var element0 = document.createElement("input");
+    	element0.setAttribute('type','text');
+    	element0.setAttribute('name','k_'+count);             
+    	cell0.appendChild(element0); 
+        
+	var cell1 = row.insertCell(1);
+   	var element1 = document.createElement("input");
+   	element1.setAttribute('type','text');
+    	element1.setAttribute('name','v_'+count);            
+    	cell1.appendChild(element1); 
+   }
+   function remove_entry(tableID){
+	var table = document.getElementById(tableID);
+    	var rowCount = table.rows.length;
+    	alert(rowCount)
+	if (rowCount > 4) 
+		{
+			table.deleteRow(rowCount-1);
+			i = parseInt(document.getElementById("count").value);
+	      		i = i-1;
+	     		document.getElementById("count").value = i; 
+		}
+   }
+</script>
+{% endblock %}
+
+{% block content %}
+
+<div id="content">
+  <p>Please specify keyspace name column family and content to be added</p>
+
+<form method = "POST" accept-charset="UTF-8" />
+		<table id="input_form">
+		     {% for item in inputs %}
+	    		<tr>
+	    			<td><label> {{ inputs[item] }} </label></td>
+	    			<td><input type="text" name="{{item}}" value=""> </td>
+	    		</tr>
+	  	     {% endfor %}
+	  	     	<tr>
+	  	     		<td><input type="text" name="k_0"></input></td>
+	  	     		<td><input type="text" name="v_0"></input></td>
+	  	     	</tr>
+  	     	</table>
+  	     	<table>
+  	     	<tr>	<td>  <input type="button" name="Add" value="Add" onClick="add_entry('input_form');">	</td>
+  	     		<td>  <input type="button" name="Remove" value="Remove" onClick="remove_entry('input_form');"></td>	</tr>
+  	     	<tr><td colspan="2">	{{ info.error }}	</td></tr>
+  	     	<tr><td colspan="2">	<input type="submit" value="Submit">	</td></tr>
+  	     	</table> 
+  	     	<input type="hidden" id="count" name="count" value="0">       	
+</form>
+</div>
+{% endblock %}
+
+
+

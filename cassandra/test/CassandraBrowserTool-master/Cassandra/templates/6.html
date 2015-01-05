@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block title %}	
+	{{ info.title }}
+{% endblock %}
+
+{% block content %}
+
+<div id="content">
+  <p>Please specify keyspace name</p>
+
+<form method = "POST" accept-charset="UTF-8" />
+		<table>
+             {% for item in inputs %}
+    		<tr>
+    			<td><label> {{ inputs[item] }} </label></td>
+    			<td><input type="text" name="{{item}}" value=""> </td>
+    		</tr>
+  	     {% endfor %}
+  	     	</table>
+  	     	<table>
+  	     	<tr><td colspan="2">	{{ info.error }}	</td></tr>
+  	     	<tr><td colspan="2">	<input type="submit" value="Submit">	</td></tr>
+  	     	</table>        	
+</form>
+</div>
+{% endblock %}
+
+
+

@@ -1,0 +1,70 @@
+
+{% extends "layout 2.html" %}
+
+{% block title %}	
+	Cassandra Browsing Tool
+{% endblock %}
+
+{% block javascript %}
+<link rel="stylesheet" href="../static/css/1.css">
+<script src="../static/1.js"></script>
+<script>
+function myFunction(id)
+{
+
+       $('.CSSTableGenerator').hide();
+
+
+       var e = document.getElementById(id);
+
+
+       if(e.style.display == 'none')
+       {
+          
+          e.style.display = '';
+       }
+       else
+       {
+
+          e.style.display = 'none';
+       }
+}
+
+
+</script>
+{% endblock %}
+
+{% block sidebar%}
+<ul class= "sidebar">
+{% for item in d %}
+	<li><a href="#" onclick="myFunction('{{item}}');return false;" >{{ item }}</a></li>
+	<div id={{item}} style="display:none;" class="subdiv">
+	{% for item1 in d[item] %}
+		</li><a href="#" onclick="myFunction('{{item}}+{{item1}}');return false;"><font color="blue" style="margin-left:20px;"> {{item1}}</font> </a></li>
+	{% endfor %}    
+	</div>
+{% endfor %}
+</ul>
+{% endblock %}
+
+{% block content%}
+        {% for item in d %}
+	    {% for item1 in d[item] %}		
+		<div class = "CSSTableGenerator" id={{item}}+{{item1}} style="display:none;">
+		<table class="table table-striped" style="width:800px;"> 
+		{% for row in d[item][item1] %}
+		     <tr>
+			<td><label> {{ row[0] }} </label></td>
+			{% for key in row[1] %}
+			<td><label><font size="2" color="blue"> {{ key }} </font></label></td>
+			<td><label><font size="2" color="green"> {{row[1][key]}} </font></label></td>
+			{% endfor %}
+		    </tr>
+		{% endfor %}
+		</table>
+		</div>
+	{% endfor %}    
+	</div>
+  {% endfor %}
+{% endblock %}
+

@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{% block title %}	{% endblock %}</title>
+    <strong><link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}"></strong>
+    <link href="http://fonts.googleapis.com/css?family=Abel" rel="stylesheet" type="text/css" />
+<link href="style.css" rel="stylesheet" type="text/css" media="screen" />
+  </head>
+  <body>
+   
+    <header>
+      <div class="container">
+        <h1 class="logo">Cassandra browser tool</h1>
+	<strong><nav>
+      		<ul class="sidebar">
+        		<li><a href="{{ url_for('Create_Keyspace') }}"> Create_Keyspace </a></li>
+        		<li><a href="{{ url_for('Drop_Keyspace') }}"> Drop Keyspace </a></li>
+        		<li><a href="{{ url_for('List_Keyspace') }}"> List_Keyspace </a></li>
+        		<li><a href="{{ url_for('Create_ColumnFamily') }}"> Create_ColumnFamily </a></li>
+        		<li><a href="{{ url_for('Drop_ColumnFamily') }}"> Drop_ColumnFamily </a></li>
+        		<li><a href="{{ url_for('List_ColumnFamily') }}"> List_ColumnFamily </a></li>
+        		<li><a href="{{ url_for('Add_Entry_ColumnFamily') }}"> Add_Entry_ColumnFamily </a></li>
+        		<li><a href="{{ url_for('Drop_Entry_ColumnFamily') }}"> Drop_Entry_ColumnFamily </a></li>
+        		<li><a href="{{ url_for('Display_Entry_ColumnFamily') }}"> Display_Entry_ColumnFamily </a></li>
+        		<li><a href="{{ url_for('List_Machines_Cluster') }}"> List_Machines_Cluster </a></li>
+      		</ul>
+    	</nav></strong>
+      </div>
+    </header>
+     
+    <div class="container">
+      {% block content %}
+      {% endblock %}
+    </div>
+     
+  </body>
+</html>

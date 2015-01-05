@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block title %}	
+	Getting Started
+{% endblock %}
+
+{% block content %}
+
+<div id="content">
+
+<h2> Getting Started with our Tool </h2>
+
+<h4> Steps to be Followed </h4>
+<ul> 
+ <li> First you need to install the required Libraries needed to use our tool ie, Cassandra, Pycassa (Python API) and Flask (Python Microframework based on WSGI).</li> 
+ <li> Run the Cassandra Server using the command Cassandra -f on terminal (Make sure you have sudo access to the machine to run cassandra). </li>
+ <li> Download our Source Code from <a href="https://github.com/CloudProjectWork/CassandraBrowserTool"> here </a>. </li>
+ <li> From the Cassandra folder, run the python code. </li>
+ <li> Then point your browser to the localhost IP on Port 5000 (default port). </li> 
+ <li> Now you can easily operate on the cassandra database using our web based application tool. </li>
+</ul>
+</br>
+
+<h4> One can run this setup in just one step by running the script file named <a href="https://github.com/CloudProjectWork/CassandraBrowserTool"> setup.sh </a> from our source code. </h4>
+</br>
+
+<h4> For Adding a node to a Cluster you have to specify some inputs as mentioned in the input file ad Run the script  <a href="https://github.com/CloudProjectWork/CassandraBrowserTool"> addnode.sh </a> from our source code on the machine to be added. (Make sure You have root access to the machine)</h4>
+</br></br>
+
+<h4> To know more about the functionalities being offered by our tool , one can refer to <a href="{{ url_for('help') }}"> About the tool </a> section</h4> 
+</br></br>
+
+<h4> For the Detailed study of the Functionalites about our Application Tool, one can go to the link over <a href="https://github.com/CloudProjectWork/CassandraBrowserTool"> here </a>  and read the Documentation.</h4> 
+
+</br></br>
+
+</br></br>
+
+</div>
+{% endblock %}
+
+
+
+
+
+

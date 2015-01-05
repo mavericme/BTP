@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block title %}	
+	
+{% endblock %}
+
+{% block content %}
+
+<div id="three-column" class="container">	
+   	<div id="tbox1"> <a href="{{ url_for('Add_Machine') }}" > <span class="icon icon-cogs"> </a> </span>
+			<div class="title">
+				<h2>Add Machine</h2>
+			</div>
+			<p>Description.</p>
+			<a href="{{ url_for('Add_Machine') }}" class="button">Learn More</a> </div>
+
+   	<div id="tbox2"> <a href="{{ url_for('Delete_Machine') }}" > <span class="icon icon-legal"> </a>  </span>
+			<div class="title">
+				<h2>Remove Machine</h2>
+			</div>
+			<p>Description.</p>
+			<a href="{{ url_for('Delete_Machine') }}" class="button">Learn More</a> </div>
+
+   	<div id="tbox3"> <a href="{{ url_for('List_Machines_Cluster') }}" > <span class="icon icon-list"> </a> </span>
+			<div class="title">
+				<h2>List Machine</h2>
+			</div>
+			<p>Description.</p>
+			<a href="{{ url_for('List_Machines_Cluster') }}" class="button">Learn More</a> </div>
+	</div>
+
+{% endblock %}

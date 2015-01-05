@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+
+{% block title %}	
+	Cassandra Browsing Tool
+{% endblock %}
+
+{% block content %}
+
+<div id="content">
+
+<h2> Welcome to our Cassandra Browser Tool </h2>
+
+</br>
+
+
+<p><font size="5px" style="bold"> Description </font></p>
+<h4>Our  Web  based  Application  allows  the  user  to  work  with  the  Cassandra  Database. The User can perform various operations such as Create, Drop, Retrieve Information about Keyspaces, Column Families and Clusters. Our tool provides the various Functionalities to the user to operate and perform various operations on the Cassandra Database.
+</h4>
+	<ul>
+	<li> <h4 >Keyspace Operations -  A section for creating a keyspace, dropping keyspace and retrieving information about keyspaces.</h4>
+    <li> <h4> Column Family Operations- A section for creating a column family, indexing a column family, get the description of a column family, dropping column families.</h4>
+	<li> <h4> Rows and Columns Operations - A section for inserting rows and columns, deleting rows and columns and altering rows and columns.</h4>
+	<li> <h4> Managing Cluster - A section that will show the Cluster Information details such as machine added to cluster, allowing a user to add or remove a machine just by giving IP address, etc.</h4>
+	<li> <h4> Understanding Application - A section that will provide the documentation to the user explaining the architecture and working of our application and how to use.</h4>
+	</ul>
+</br>
+</br>
+
+
+<p><font size="5px" style="bold"> What we Offer </font></p>
+
+<h4>We offer the users to maintain their huge database with the help of user friendly web based application tool. We allow the users to store their huge database on the Cassandra server and operate on it without any prior knowledge of Cassandra Query Language (CQL). Also allowing them to easily Scale their database on servers so as for better performance, continuous availability of the database to the users, workload diversity, manageability and its security.
+</h4>
+</br>
+
+<p><font size="5px" style="bold"> Application Tool Implementation </font></p>
+
+<h4>Our Project is basically divided into three modules : Backend Server, Frontend User
+Interface and the Web server (interlink between the first two).</h4>
+	<ul>
+	<li><h4> Create a web application that interacts with Cassandra (Database server) to operate various queries on Keyspaces, Column Family and Clusters information. Allowing the user to insert into database without any prior knowledge about Cassandra Query Language. Display of the data fetched from the Cassandra server in HTML format using Jinja2	templates.</h4></li>
+	<li><h4> Use of Pycassa, a python application that will communicate with cassandra server to fetch data based on the queries filed by the user. Managing and monitoring of Cassandra server on different nodes for large database.</h4></li>
+	<li><h4> A Web Server (made use of Flask API in python) running communicates with the User Interface through HTTP requests and response objects and further communicates with the python API (Pycassa).</h4></li>
+	</ul>
+
+</br></br></br></br>
+
+
+</div>
+{% endblock %}
+

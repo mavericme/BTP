@@ -1,0 +1,146 @@
+
+<!doctype html>
+<head>
+	<link type="text/css" rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css">
+	<link type="text/css" rel="stylesheet" href="../static/src/css/graph.css">
+	<link type="text/css" rel="stylesheet" href="../static/src/css/detail.css">
+	<link type="text/css" rel="stylesheet" href="../static/src/css/legend.css">
+	<link type="text/css" rel="stylesheet" href="css/extensions.css?v=2">
+
+	<script src="../static/vendor/d3.v3.js"></script>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script>
+		jQuery.noConflict();
+	</script>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.15/jquery-ui.min.js"></script>
+
+	<script src="../static/src/js/Rickshaw.js"></script>
+	<script src="../static/src/js/Rickshaw.Class.js"></script>
+	<script src="../static/src/js/Rickshaw.Compat.ClassList.js"></script>
+	<script src="../static/src/js/Rickshaw.Graph.js"></script>
+	<script src="../static/src/js/Rickshaw.Graph.Renderer.js"></script>
+	<script src="../static/src/js/Rickshaw.Graph.Renderer.Area.js"></script>
+	<script src="../static/src/js/Rickshaw.Graph.Renderer.Line.js"></script>
+	<script src="../static/src/js/Rickshaw.Graph.Renderer.Bar.js"></script>
+	<script src="../static/src/js/Rickshaw.Graph.Renderer.ScatterPlot.js"></script>
+	<script src="../static/src/js/Rickshaw.Graph.Renderer.Stack.js"></script>
+	<script src="../static/src/js/Rickshaw.Graph.RangeSlider.js"></script>
+	<script src="../static/src/js/Rickshaw.Graph.RangeSlider.Preview.js"></script>
+	<script src="../static/src/js/Rickshaw.Graph.HoverDetail.js"></script>
+	<script src="../static/src/js/Rickshaw.Graph.Annotate.js"></script>
+	<script src="../static/src/js/Rickshaw.Graph.Legend.js"></script>
+	<script src="../static/src/js/Rickshaw.Graph.Axis.Time.js"></script>
+	<script src="../static/src/js/Rickshaw.Graph.Behavior.Series.Toggle.js"></script>
+	<script src="../static/src/js/Rickshaw.Graph.Behavior.Series.Order.js"></script>
+	<script src="../static/src/js/Rickshaw.Graph.Behavior.Series.Highlight.js"></script>
+	<script src="../static/src/js/Rickshaw.Graph.Smoother.js"></script>
+	<script src="../static/src/js/Rickshaw.Fixtures.Time.js"></script>
+	<script src="../static/src/js/Rickshaw.Fixtures.Time.Local.js"></script>
+	<script src="../static/src/js/Rickshaw.Fixtures.Number.js"></script>
+	<script src="../static/src/js/Rickshaw.Fixtures.RandomData.js"></script>
+	<script src="../static/src/js/Rickshaw.Fixtures.Color.js"></script>
+	<script src="../static/src/js/Rickshaw.Color.Palette.js"></script>
+	<script src="../static/src/js/Rickshaw.Graph.Axis.Y.js"></script>
+
+	<script src="js/extensions.js"></script>
+</head>
+<body>
+
+<div id="content">
+
+
+	<div id="chart_container">
+		<div id="chart"></div>
+		<div id="timeline"></div>
+		<div id="preview"></div>
+	</div>
+
+</div>
+
+<script>
+
+// set up our data series with 150 random data points
+
+var seriesData = [ [] ];
+var random = new Rickshaw.Fixtures.RandomData(150);
+
+for (var i = 0; i < 150; i++) {
+	random.addData(seriesData);
+}
+
+var palette = new Rickshaw.Color.Palette( { scheme: 'classic9' } );
+
+// instantiate our graph!
+
+var graph = new Rickshaw.Graph( {
+	element: document.getElementById("chart"),
+	width: 900,
+	height: 500,
+	renderer: 'area',
+	stroke: true,
+	preserve: true,
+	series: [
+		 {
+			color: palette.color(),
+			data: seriesData[0],
+			name: 'New York'
+		}
+	]
+} );
+
+graph.render();
+
+var x1 = {{b|tojson|safe}};
+
+setInterval( function() {
+	//random.removeData(seriesData);
+	//random.addData(seriesData);
+	hello();
+	console.log(seriesData);		
+	graph.update();
+
+}, 3500 );
+
+function pausecomp(millis)
+ {
+  var date = new Date();
+  var curDate = null;
+  do { curDate = new Date(); }
+  while(curDate-date < millis);
+}
+
+function extract(data){
+	var l = [];
+	for (i=1;i<=10;i++){
+		var obj = {};
+		var d = new Date();
+		var n = d.getTime();
+		pausecomp(300);	
+		obj['x'] = n;
+		obj['y'] = x1[i-1];
+		l.push(obj);
+		//console.log(l);			
+	}
+	seriesData[0] = l;
+}
+
+function hello()
+{
+	$.ajax({
+	    	type: "GET",
+	    	url: "/test",
+	    	success: function(data){
+			extract(data);
+	   	 },
+	   	 error: function(){
+	       	 	alert("error");
+	    	}
+	});
+}
+</script>
+
+</body>
+

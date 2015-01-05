@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block title %}	
+	{{ info.title }}
+{% endblock %}
+
+{% block content %}
+
+<div id="content">
+
+{% if result %}
+	<p>Result of column family entry add</p>
+	<h1>	{{result}}	</h1>
+{% else %}
+	<h1>	{{result}} : {{ error }}	</h1>
+{% endif %}
+
+</div>
+{% endblock %}
+
+
+
+

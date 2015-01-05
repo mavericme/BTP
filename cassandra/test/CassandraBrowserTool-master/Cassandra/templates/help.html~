@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+
+{% block title %}	
+	Help
+{% endblock %}
+
+{% block content %}
+
+<div id="content">
+
+<h3> Instructions to use our Application </h3>
+</br>
+<p><font size="5px" style="bold"> OVERVIEW </font></p>
+<h4>Our  Web  based  Application  allows  the  user  to  work  with  the  Cassandra  Database. The User can perform various operations such as Create, Drop, Retrieve Information about Keyspaces, Column Families and Clusters. Our tool provides the below mentioned Functionalities to the user to operate and perform various operations with the Cassandra Database.
+</h4>
+
+<ul>
+</br>
+
+
+<li><p><font size="4px" style="bold"> KEYSPACES </font></p>
+<ul>
+<li>  <a href="{{ url_for('keyspace') }}"> Create </a>  -  For Creating new Keyspace with the input specified replication factor.
+<li>  <a href="{{ url_for('keyspace') }}"> Destroy </a> - For Destroying an existing Keyspace. 
+<li>  <a href="{{ url_for('keyspace') }}"> List </a> - For Listing the names of all existing keyspaces.
+</ul>
+</br></br>
+
+<li><p><font size="4px" style="bold"> COLUMN FAMILIES </font></p>
+<ul>
+<li>  <a href="{{ url_for('column_family') }}"> Create </a>  -  For Creating new Column Family in the desired Keyspace.
+<li>  <a href="{{ url_for('column_family') }}"> Destroy </a> - For Destroying an existing Column Family of the desired Keyspace. 
+<li>  <a href="{{ url_for('column_family') }}"> List </a> - For Listing the names of all the existing Column Families of the desired Keyspace.
+</ul>
+</br></br>
+
+<li><p><font size="4px" style="bold">  DATA ENTRY </font></p>
+<ul>
+<li> <a href="{{ url_for('data_manipulation') }}"> Add Entry </a> - For Adding a new entry to the Column Family of desired Keyspace.
+<li> <a href="{{ url_for('data_manipulation') }}"> Remove Entry </a> - For Removing an existing entry from the Column Family of desired Keyspace.
+</ul>
+</br></br>  
+  
+<li><p><font size="4px" style="bold">  DATA SEARCH </font></p>
+<ul>
+<li> <a href="{{ url_for('data_search') }}"> Get Key </a> - For Displaying the Key of the Column Family
+<li> <a href="{{ url_for('data_search') }}"> Get Entries </a> - For Getting the entries of the Column Family of desired Keyspace.
+</ul>
+</br></br>
+
+<li><p><font size="4px" style="bold">  CLUSTER </font></p>
+<ul>
+<li> <a href="{{ url_for('cluster_operations') }}"> Add Machine </a> - For Adding a new machine to the Cluster.
+<li> <a href="{{ url_for('cluster_operations') }}"> Remove Machine </a> - For Removing an existing machine from the Cluster.
+<li> <a href="{{ url_for('cluster_operations') }}"> List Machines </a> - For Viewing the lists of all existing machines in a Cluster.
+</ul>
+</br></br>
+
+</br></br></br></br></br>
+
+</div>
+{% endblock %}
+
+
+

@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block title %}	
+	{{ info.title }}
+{% endblock %}
+
+{% block content %}
+
+<div id="content">
+  <p>Search for key in column family result</p>
+{% if result %}
+<form method = "get" accept-charset="UTF-8" />
+	     <table border="1">
+		<tr>
+    			<td colspan = "2"><label> {{ info.key }} </label></td>
+    		</tr>
+		{% for row in result %}
+    		<tr>
+    			<td ><label> {{ row }} </label></td>
+			<td ><label> {{ result[row] }} </label></td>
+    		</tr>
+  	     	{% endfor %}
+  	     </table>
+</form>
+{% else %}
+	<h1>{{result}}</h1>
+{% endif %}
+</div>
+
+{% endblock %}

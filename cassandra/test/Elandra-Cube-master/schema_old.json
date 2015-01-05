@@ -1,0 +1,26 @@
+{
+    "mykeyspace": {
+        "t1": {
+            "columns": { 
+                "id": { "type": "int", "primary_key": true, "index_type": "ignore" },
+                "fname": { "type": "str", "primary_key": true, "index_type": "index" },
+                "lname": { "type": "str", "primary_key": false, "index_type": "index" },
+                "marks": { "type": "int", "primary_key": false, "index_type": "aggregate" }
+            }
+        },
+
+        "t2": {
+            "columns": { 
+		"id": { "type": "int", "primary_key": true, "index_type": "ignore" },
+             	"region": { "type": "str", "primary_key": true, "index_type": "index" },
+                "year": { "type": "int", "primary_key": false, "index_type": "index" },
+                "sales": { "type": "int", "primary_key": false, "index_type": "aggregate" }
+            }
+        }
+    },
+    "k2": {
+        "t3": {
+            "columns": {}
+        }
+    }
+}

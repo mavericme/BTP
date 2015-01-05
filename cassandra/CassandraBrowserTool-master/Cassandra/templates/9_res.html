@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+
+{% block title %}	
+	{{ info.title }}
+{% endblock %}
+
+{% block javascript %}
+<script>
+function formSubmit(val)
+	{
+	if (val == 1)
+		{
+		i = parseInt(document.getElementById("next_val").value);
+     		i = i-20;
+		if(i>=0)
+     		 	{document.getElementById("next_val").value = i; }
+		else
+			{document.getElementById("next_val").value = 0; }	
+		}
+	document.getElementById("form").submit();
+	}
+</script>
+{% endblock %}
+
+{% block content %}
+
+<div id="content">
+
+{% if result %}
+<p>Content of column family</p>
+<form id="form" method = "POST" accept-charset="UTF-8" />
+		<input type="hidden" id="ks_name" name="ks_name" value="">
+		<input type="hidden" id="cf_name" name="cf_name" value="">
+		<input type="hidden" id="next_val" name="next_val" value="{{next_val}}">
+	     <table border="0">
+             {% for row in result %}
+    		<tr>
+    			<td rowspan = "2"><label> {{ row[0] }} </label></td>
+    			{% for key in row[1] %}
+    				<td><label><font size="2" color="blue"> {{key}} </font></label></td>
+			{% endfor %}
+    		</tr>
+		<tr>
+			{% for key in row[1] %}
+    				<td><label><font size="2" color="green"> {{row[1][key]}} </font></label></td>
+			{% endfor %}
+		</tr>
+  	     {% endfor %}
+		<tr>
+		<td >	<input type="button" onclick="formSubmit(1)" name="previous" value="Previous">	</td>
+		<td >	<input type="button" onclick="formSubmit(2)" name="next" value="Next">	</td>
+		</tr>
+  	     </table>
+</form>
+{% else %}
+	<h1>	{{ error }}	</h1>
+{% endif %}
+</div>
+
+{% endblock %}
+	

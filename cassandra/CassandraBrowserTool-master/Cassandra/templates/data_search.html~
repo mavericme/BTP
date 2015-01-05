@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block title %}	
+	
+{% endblock %}
+
+{% block content %}
+
+<div id="three-column" class="container">	
+   	<div id="tbox1"> <a href="{{ url_for('Get_Entry_ColumnFamily') }}" > <span class="icon icon-key"> </a> </span>
+			<div class="title">
+				<h2>Get key</h2>
+			</div>
+			<p>Description.</p>
+			<a href="{{ url_for('Get_Entry_ColumnFamily') }}" class="button">Learn More</a> </div>
+	<div id="tbox2"> 
+	</div>
+
+   	<div id="tbox3"> <a href="{{ url_for('Display_Entry_ColumnFamily') }}" > <span class="icon icon-shopping-cart"> </a>  </span>
+			<div class="title">
+				<h2>Get Entries</h2>
+			</div>
+			<p>Description.</p>
+			<a href="{{ url_for('Display_Entry_ColumnFamily') }}" class="button">Learn More</a> </div>
+
+   	
+
+{% endblock %}

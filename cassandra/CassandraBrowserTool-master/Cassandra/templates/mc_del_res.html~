@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block title %}	
+	{{ info.title }}
+{% endblock %}
+
+{% block content %}
+
+<div id="content">
+  <p>Result of machine delete</p>
+{% if result %}
+	<h1>{{result}}</h1>
+{% else %}
+	<h1>{{error}}</h1>
+{% endif %}
+</div>
+{% endblock %}

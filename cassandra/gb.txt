@@ -1,0 +1,13 @@
+Area Roof Meeting Minimum SRI
+————————————————
+Total Roof Area
+x
+SRI of Installed Roof
+——————————
+Required SRI
+≥
+75%
+
+The illumination
+level measured with the lights on must not be more than 20% above the level measured with the lights off. 
+

@@ -1,0 +1,98 @@
+{% extends "layout.html" %}
+
+{% block title %}	
+	Cassandra Browsing Tool
+{% endblock %}
+
+{% block javascript %}
+<link rel="stylesheet" href="../static/css/1.css">
+<script src="../static/1.js"></script>
+<script>
+function myFunction(id)
+{
+       var e =document.getElementById(id);
+       if(e.style.display == 'none')
+       {
+          e.style.display = '';
+       }
+       else
+       {
+          e.style.display = 'none';
+       }
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="sidebar">
+<form method = "POST" accept-charset="UTF-8" />
+		<table>
+    		<tr>
+    			<td><label> KeySpace </label></td>  
+    			<td><input type="text" name="keyspace" value=""> </td>
+    		</tr>
+
+		<tr>
+    		<td><label> Key Word </label></td>  
+    		<td><input type="text" name="word" value=""> </td>
+    		</tr>
+
+		<tr>  
+    		<td><input type="hidden" name="flag" value="1"> </td>
+    		</tr>
+
+  	     	</table>
+  	     	<table>
+  
+  	     	<tr><td colspan="2">	<input type="submit" value="Submit">	</td></tr>
+  	     	</table> 
+		</br>       	
+</form>
+<form method = "POST" accept-charset="UTF-8" />
+		<table>
+
+		<tr>
+    		<td><label> Query </label></td>  
+    		<td><input type="text" name="query" value=""> </td>
+    		</tr>
+		
+		<tr>  
+    		<td><input type="hidden" name="flag" value="0"> </td>
+    		</tr>
+
+  	     	</table>
+  	     	<table>
+  
+  	     	<tr><td colspan="2">	<input type="submit" value="Submit">	</td></tr>
+  	     	</table> 
+		</br>       	
+</form>
+</div>
+<div>
+		{% if(len1 == 0): %}
+			<h3>No Related data found !!</h3>
+		{% else: %}
+		{% for key in p %}
+		<h3><font color="#01A9DC"> {{key}} </font></h3>
+		<table class="table table-striped" style="width:100%;">
+		<tr>
+		{% for row in p[key] %}
+		     <tr>
+			{% for key1 in row %}
+				{% if key1[0]=='@': %}
+					<td><label><font color="red"><b> {{key1[1:]}} </b></font></label></td>
+					<td><label><font color="red"><b> {{row[key1]}} </b></font></label></td>
+				{% else: %}
+					<td>{{key1}}</td>
+					<td>{{row[key1]}}</td>	
+				{% endif %}
+			{% endfor %}
+		    </tr>
+		{% endfor %}
+		</table>
+		{% endfor %}
+		{% endif %}
+	</br>
+ </div> 
+{% endblock %}
+

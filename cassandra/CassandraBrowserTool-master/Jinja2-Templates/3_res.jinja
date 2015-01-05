@@ -1,0 +1,30 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+
+  <title>{{ title }}</title>
+  <meta name="description" content="{{ description }}" />
+</head>
+
+<body>
+
+<div id="content">
+  <p>List of all keyspaces</p>
+</div>
+<form method = "POST" accept-charset="UTF-8" />
+		<table>
+             {% for item in input %}
+    		<tr>
+    			<td><label> {{item}} </label></td>
+    		</tr>
+  	     {% endfor %}
+  	     	</table>
+</form>
+
+</body>
+</html>
+
+
+

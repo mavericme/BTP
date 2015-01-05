@@ -1,0 +1,55 @@
+<!doctype html>
+
+<html>
+<head>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>{% block title %}	{% endblock %}</title>
+<link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" type="text/css" media="screen" />
+<link href="{{ url_for('static', filename='css/fonts.css') }}" rel="stylesheet" type="text/css" media="screen" />
+</head>
+<body>
+
+<div  class="container">
+	
+	<div id="logo">
+		<h1><span class="icon icon-legal"></span><a href="#">Cassandra<span>tool</span></a></h1>
+	</div>
+	<!-- end #header -->
+			<div id="menu">
+				<ul>
+					<li >
+					<a href="{{ url_for('main') }}">Home</a></li>
+					<li><a href="{{ url_for('keyspace') }}"> Keyspace </a></li>
+					<li><a href="{{ url_for('column_family') }}"> Column Family </a></li>
+					<li><a href="{{ url_for('data_manipulation') }}"> Data Operations </a></li>
+					<li><a href="{{ url_for('my_form') }}"> Data Search </a></li>
+					<li><a href="{{ url_for('cluster_operations') }}"> Cluster </a></li>
+				</ul>
+			</div>	
+			<!-- end #menu -->
+		<div>
+			<div id="sidebar">
+				{% block sidebar %}
+				{% endblock %}					
+			</div> 
+			<!-- end #sidebar -->	
+			<div id="maincontent" class="content" >
+	      			{% block content %}
+	      			{% endblock %}
+    			</div>
+			<!-- end #content -->
+		</div>
+		<!-- end #centerpage -->
+	<div class="footer">
+		<p>Copyright (c) All rights reserved. | <a href="#">CassandraTool</a> 
+		</p>
+	</div>
+	<!-- end #footer -->
+</div>
+
+{% block javascript %}		{% endblock %}
+
+</body>
+</html>

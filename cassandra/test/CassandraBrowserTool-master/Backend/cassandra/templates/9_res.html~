@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block title %}	
+	{{ info.title }}
+{% endblock %}
+
+{% block content %}
+
+<div id="content">
+  <p>Content of column family</p>
+{% if result %}
+<form method = "get" accept-charset="UTF-8" />
+	     <table>
+             {% for row in result %}
+    		<tr>
+    			<td rowspan = "2"><label> {{ row[0] }} </label></td>
+    			{% for key in row[1] %}
+    				<td><label> {{key}} </label></td>
+			{% endfor %}
+    		</tr>
+		<tr>
+			{% for key in row[1] %}
+    				<td><label> {{row[1][key]}} </label></td>
+			{% endfor %}
+		</tr>
+  	     {% endfor %}
+  	     </table>
+</form>
+{% else %}
+	<h1>{{result}}</h1>
+{% endif %}
+</div>
+
+{% endblock %}
+	

@@ -1,0 +1,32 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+
+  <title>{{ title }}</title>
+  <meta name="description" content="{{ description }}" />
+</head>
+
+<body>
+
+<div id="content">
+  <p>Please specify keyspace and column family</p>
+</div>
+<form method = "get" accept-charset="UTF-8" />
+		<table>
+             {% for item in input %}
+    		<tr>
+    			<td><label> {{input[item]}} </label></td>
+    			<td><input type="text" name="{{item}}" value=""> </td>
+    		</tr>
+  	     {% endfor %}
+  	     	</table>
+            	<input type="submit" value="Submit">
+</form>
+
+</body>
+</html>
+
+
+

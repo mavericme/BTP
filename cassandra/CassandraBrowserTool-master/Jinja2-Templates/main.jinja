@@ -1,0 +1,33 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+
+  <title>{{ title }}</title>
+  <meta name="description" content="{{ description }}" />
+</head>
+
+<body>
+
+<div id="content">
+  <p>Please enter you choice for the query</p>
+
+  <ol>
+  {% for item in favorites %}
+    <li><button type= "button" name="{{ item }}" onclick="myFunction()">{{ item }}</button></li>
+  {% endfor %}
+  </ol>
+</div>
+<form method = "POST" accept-charset="UTF-8" />
+        <label>
+            <div>name</div>
+            <input type="text" name="hosttip" value="{{hostip}}">
+        </label>
+</form>
+
+</body>
+</html>
+
+
+
